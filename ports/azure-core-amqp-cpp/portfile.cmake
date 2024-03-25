@@ -1,12 +1,25 @@
+# NOTE: All changes made to this file will get overwritten by the next port release.
+# Please contribute your changes to https://github.com/Azure/azure-sdk-for-cpp.
+
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO Azure/azure-sdk-for-cpp
-    REF azure-core-amqp_1.0.0-beta.2
-    SHA512 ccbcf564027f8f4d0c596548bc67aa27dbfba63fc6afbad9ba22139b7aff42da2c09085b9510efbaa4dd81326673b5aa06441b4be43474d711506bd255612822
+    REF azure-core-amqp_1.0.0-beta.7
+    SHA512 ece00ea8a005cffba9df5e00169d7c1f4d1db75bf4acfab8a5057221c7992886df89882bd5eec146e432a0463f526cd547fa90c7430a0228441762e2ad4513e1
 )
 
+if(EXISTS "${SOURCE_PATH}/sdk/core/azure-core-amqp")
+  file(REMOVE_RECURSE "${SOURCE_PATH}/sdk/core/_")
+  file(REMOVE_RECURSE "${SOURCE_PATH}/sdk/_")
+  file(REMOVE_RECURSE "${SOURCE_PATH}/_")
+
+  file(RENAME "${SOURCE_PATH}/sdk/core/azure-core-amqp" "${SOURCE_PATH}/sdk/core/_")
+  file(RENAME "${SOURCE_PATH}/sdk/core" "${SOURCE_PATH}/sdk/_")
+  file(RENAME "${SOURCE_PATH}/sdk" "${SOURCE_PATH}/_")
+endif()
+
 vcpkg_cmake_configure(
-    SOURCE_PATH "${SOURCE_PATH}/sdk/core/azure-core-amqp/"
+    SOURCE_PATH "${SOURCE_PATH}/_/_/_"
     OPTIONS
         -DWARNINGS_AS_ERRORS=OFF
         -DBUILD_TESTING=OFF
