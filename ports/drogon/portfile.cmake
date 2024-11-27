@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO an-tao/drogon
     REF "v${VERSION}"
-    SHA512 0c58ed45aacbfd1916bbd9c52ecbd203abdc1032c7d6f908750a188443e293d749705d35c2b56eab54e30f36cc606b2437889e11a482ebda34d36035e8221499
+    SHA512 39cbb337d1b83d2202fff8bf43e9173060d1cfc8384369aa3d86e63ac2bfca9b8c3bec4bcf48f8c400788791fbfeccb0cd934cb7b26d95ef12981b4227206726
     HEAD_REF master
     PATCHES
          0001-vcpkg.patch

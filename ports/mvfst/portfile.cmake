@@ -2,7 +2,7 @@ vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO facebook/mvfst
     REF "v${VERSION}"
-    SHA512 191774b946bde7d906c7537830678df52025df0c34892f42ed784cd7ffb7f906e00991795700fe039a4c6ec94234ef7c0b19b915fbd15b16d682cfa6f3055eb2
+    SHA512 662a86f4b1b1d60f05c9198687c668e334061d00109148d3cd4643fc10c38c7bf2810fbb6fa1d01a25847e36c54a6cc2f6fb9e1405923f6a376be50f44252b29
     HEAD_REF main
 )
 
@@ -16,4 +16,4 @@ vcpkg_cmake_install()
 vcpkg_cmake_config_fixup(CONFIG_PATH lib/cmake/mvfst)
 file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
 
-file(INSTALL "${SOURCE_PATH}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
+vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE")

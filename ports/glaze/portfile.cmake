@@ -1,18 +1,20 @@
 if(VCPKG_TARGET_IS_LINUX)
-    message("Warning: `glaze` requires Clang or GCC 11+ on Linux")
+    message("Warning: `glaze` requires Clang15+ or GCC 12+ on Linux")
 endif()
 
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO stephenberry/glaze
     REF "v${VERSION}"
-    SHA512 936ccf5f8c33388b82f703f26dd4a3f4b0cc7ba5123273391ac3d4aad44f159df67154884f4ade83bead7b18b16ed75280eebd4bbecb2e908894313fee68bd2c
+    SHA512 0db97a633e532aabbd597005fd210f78acd42551a154e51aac1d7980ddff5afa38defc59931b11fd7147178e78d986812c7e0c54ff3c3cbf63092f17dd3ceba8
+    HEAD_REF main
 )
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
         -Dglaze_DEVELOPER_MODE=OFF
+        -Dglaze_BUILD_EXAMPLES=OFF
 )
 
 vcpkg_cmake_install()
